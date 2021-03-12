@@ -88,6 +88,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
     setClock('.timer', deadline);
 
+ //MODAL
+
+ const btn = document.querySelectorAll('button[data-modal]'),
+       mdl = document.querySelector('.modal'),
+       x = document.querySelector('.modal__close');
+ 
+ function openModal() {
+    mdl.classList.remove('hide');
+    mdl.classList.add('show', 'fade');
+    document.body.style.overflow = 'hidden';
+ };
+ function closeModal() {
+    mdl.classList.remove('show', 'fade');
+    mdl.classList.add(/*'fade_out', */'hide');
+    document.body.style.overflow = '';
+ };
+ btn.forEach(item => {
+    item.addEventListener('click', openModal);
+ });
+ x.addEventListener('click', closeModal);
+
+ mdl.addEventListener('click', (e) => {
+    if (e.target === mdl) {
+        closeModal();
+    }
+ });
+ 
 
 
 
